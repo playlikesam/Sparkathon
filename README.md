@@ -7,6 +7,7 @@ Add ZXing Dependency
 If you are using Maven, add the following dependency to your pom.xml:
 xml : 
 #Start Code :
+```
 <dependency>
     <groupId>com.google.zxing</groupId>
     <artifactId>core</artifactId>
@@ -17,12 +18,13 @@ xml :
     <artifactId>javase</artifactId>
     <version>3.4.1</version>
 </dependency>
+```
 #End Code :
 
 #Generating QR Code using Java : 
 
 #Start Code :
-
+```
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -56,7 +58,7 @@ public class QRCodeGenerator {
         }
     }
 }
-
+```
 #End Code :
 
 2. Scan QR Codes in Java
@@ -66,7 +68,7 @@ Make sure the ZXing dependencies are already included (as shown above).
 #Scan QR Code
 
 #Start Code :
-
+```
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
@@ -97,7 +99,7 @@ public class QRCodeScanner {
         }
     }
 }
-
+```
 #End Code.
 
 3. Integrate with User Login
@@ -109,14 +111,14 @@ Login the User: If the scanned information matches the expected data, log the us
 
 #start code : 
 java: 
-
+```
 String sessionToken = UUID.randomUUID().toString(); // Generate a unique session token
 String qrCodeText = "https://yourapp.com/login?token=" + sessionToken;
 QRCodeGenerator.generateQRCodeImage(qrCodeText, 350, 350, "LoginQRCode.png");
-
+```
 
 java: 
-
+```
 // After scanning the QR code, validate the token
 String scannedText = QRCodeScanner.readQRCode("ScannedQRCode.png");
 if (scannedText.equals(expectedTokenUrl)) {
@@ -124,6 +126,6 @@ if (scannedText.equals(expectedTokenUrl)) {
 } else {
     // Invalid QR code
 }
-
+```
 #End code : 
 
